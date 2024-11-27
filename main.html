@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="<meta property="og:image" content="https://scontent.xx.fbcdn.net/v/t1.15752-9/462574147_503771942685362_6806907461760700875_n.jpg?stp=dst-jpg_s640x640&_nc_cat=104&ccb=1-7&_nc_sid=0024fc&_nc_ohc=YrwZSodP8r0Q7kNvgFQBgkB&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QGhKnypGn0p7IPwV5cTGPcxTK3-IrEPEZZHu6h02BSm5g&oe=676EA7CF">">
+    <title>บักบอลกินแต่ต้ม</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* กำหนดขนาดและสัดส่วนของรูปภาพใน Card */
+        .card-img-top {
+            height: 500px; /* ความสูงเท่ากันสำหรับทุกภาพ */
+            object-fit: cover; /* รักษาสัดส่วนของภาพ และครอบให้พอดีกับกรอบ */
+        }
+
+        /* Style for Popup */
+        .popup {
+            display: none; /* Hide Popup */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            z-index: 1000;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .popup img {
+            max-width: 100%;
+            height: 500px;
+        }
+
+        /* Background style when Popup is open */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Close button style */
+        .close-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        .close-btn:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">บักบอลกินแต่ต้ม</h1>
+        <div class="row g-4">
+            <!-- Card 1 -->
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="card h-100">
+                    <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462564074_1645688172959375_1859455226824503927_n.jpg?stp=dst-jpg_p480x480&_nc_cat=101&ccb=1-7&_nc_sid=0024fc&_nc_ohc=2i3LQdq6okQQ7kNvgFYwxfb&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QG9sIkxe_8h2AViyECAQxYYYIEqqPzlkgzD1WnU8o_G9Q&oe=676EC39F" class="card-img-top" class="card-img-top" alt="รูปภาพ 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Handsomer boy</h5>
+                        <p class="card-text">หล่อจาด</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button id="openPopup1" class="btn btn-primary">กดบักควยบอล</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="card h-100">
+                    <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/465593194_1143195767525685_5328363576843187426_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=107&ccb=1-7&_nc_sid=0024fc&_nc_ohc=vgb2nefrclwQ7kNvgEr1Zkt&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QHMaNw4z4tgb1BQBfw9FJffGfSbr-8XKirA50k3-hmQTA&oe=676EC7AE" class="card-img-top" alt="รูปภาพ 2">
+                    <div class="card-body">
+                        <h5 class="card-title">จุ๊บหน่อย</h5>
+                        <p class="card-text">รักน้าาาา</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button id="openPopup2" class="btn btn-primary">ลองกดดิ</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="card h-100">
+                    <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462563750_1892367344623743_565954509526364319_n.jpg?stp=dst-jpg_p480x480&_nc_cat=108&ccb=1-7&_nc_sid=0024fc&_nc_ohc=xNkTSfJvXB0Q7kNvgHtbtCW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QH1Wle0AsAJkFdh9PsFlHk6a2W-Yx78lFnV6PbjvX6DfA&oe=676EB11D" class="card-img-top" alt="รูปภาพ 3">
+                    <div class="card-body">
+                        <h5 class="card-title">อาบน้ำด้วยกันป่าวน้อง</h5>
+                        <p class="card-text">2 นิ้วยังพอไหว ไม่สองใจก็พอ</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button id="openPopup3" class="btn btn-primary">กดแนหำ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup -->
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <img id="popupImg" src="" alt="Popup Image">
+        <br>
+        <button class="close-btn" id="closePopup">ปิด</button>
+    </div>
+
+    <script>
+        // Get elements
+        const overlay = document.getElementById('overlay');
+        const popup = document.getElementById('popup');
+        const popupImg = document.getElementById('popupImg');
+        const closePopup = document.getElementById('closePopup');
+
+        // Open Popup function
+        function openPopup(imageSrc) {
+            popupImg.src = imageSrc;
+            popup.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        // Close Popup
+        closePopup.addEventListener('click', () => {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+
+        overlay.addEventListener('click', () => {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+
+        // Attach event listeners to buttons
+        document.getElementById('openPopup1').addEventListener('click', () => openPopup('https://scontent.xx.fbcdn.net/v/t1.15752-9/462553570_1172910701122566_4121933847941358785_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=0024fc&_nc_ohc=rbHwecM5prEQ7kNvgG8VLhd&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QE9BMn-L_ijqp16KyGzBqi-8Zu9T7ShjGQXAuNC7FLOnw&oe=676EC723'));
+        document.getElementById('openPopup2').addEventListener('click', () => openPopup('https://scontent.xx.fbcdn.net/v/t1.15752-9/434373843_435852362309714_7434388522223143852_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=0024fc&_nc_ohc=8DcfvqlmcZYQ7kNvgGEre9E&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QGmrD3cYe1hEdibo9ynIsKpBBlmYkHVlRkFMk9ycU0Vnw&oe=676EB623'));
+        document.getElementById('openPopup3').addEventListener('click', () => openPopup('https://scontent.xx.fbcdn.net/v/t1.15752-9/387483226_919333822373818_6588388381437819014_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=0024fc&_nc_ohc=onqh2tuLpdgQ7kNvgGDOEWd&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QFojnGoUHJM6D8_53a8nOmjYFYencNb3VRAYwMpc2s-4Q&oe=676ED881'));
+    </script>
+</body>
+</html>
